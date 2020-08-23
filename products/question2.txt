@@ -1,0 +1,53 @@
+QUESTION:1: 
+=====================================================================================
+Create two tables:
+        ->Manufacturer (id (auto increment), name (varchar(50)), address (varchar(100)), 
+        contact_no (varchar(50)).
+        ->Product (id (auto increment), name (varchar(50)), price (INT(5)), manufacturer_id (INT(10)).
+=======================================================================================
+ANSWER:
+========================================================================================
+CREATE TABLE `manufacturer`(
+ id TINYINT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+name VARCHAR(50) NOT NULL, 
+address VARCHAR(250) NOT NULL, 
+contact_no varchar(50) NOT NULL
+ );
+
+CREATE TABLE `product`(
+ id TINYINT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+name VARCHAR(50) NOT NULL, 
+price INT(5) NOT NULL, 
+ manufacturer_id int(10) NOT NULL
+ );
+=========================================================================================
+       -> Add two or more data into the tables.
+=========================================================================================
+ANSWER:
+========================================================================================
+INSERT INTO manufacturer(`name`, `address`, `contact_no`)VALUES("Nokia", "Bangladesh", "017205"),
+("Walton", "Bangladesh", "017206"),("Sumsung", "Bangladesh", "017207") ;
+
+INSERT INTO product(`name`, `price`, `manufacturer_id`)VALUES("nokiaPC", "5000", "1"),
+("nokiaV5", "5070", "1"),("nokiaH5", "5000", "1"),("walton20", "5009", "2"),("walton28", "5099", "2"),
+("sumsung45", "5059", "3"),("sumsung47", "5069", "3") ;
+==========================================================================================
+        ->Create an after delete trigger which will delete record(s) from the product table when any corresponding 
+        manufacturer_id are deleted from the manufacturer table.  
+=========================================================================================
+ANSWER:
+========================================================================================
+DELIMITER $$
+CREATE TRIGGER log_manu_del AFTER DELETE on manufacturer
+FOR EACH ROW
+BEGIN
+DELETE FROM product
+    WHERE product.manufacturer_id = old.id;
+END $$
+DELIMITER ;
+===========================================================================================
+-> Create a form to select manufacturer id and write php script to delete the record from Manufacturer table of 
+ selected manufacturer.
+=====================================================================================
+ANSWER:
+=====================================================================================

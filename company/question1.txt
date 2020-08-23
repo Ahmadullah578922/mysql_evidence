@@ -1,0 +1,29 @@
+QUESTION:1: 
+=====================================================================================
+Create a database named Company and do the following task: 
+ ->Create a table named user: 
+->username(varchar(20)), password(varchar(30)).  
+=====================================================================================
+ANSWER:
+=====================================================================================
+CREATE TABLE  `user` (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  username varchar(20) NOT NULL,
+  password varchar(30) NOT NULL
+) 
+======================================================================================
+->Add two or more data into the table.
+======================================================================================
+ANSWER:
+=====================================================================================
+INSERT INTO `user` (`username`, `password`) VALUES
+('faruk', '12345'),
+('monir', '54321'),
+('sohel', '11111');
+===================================================================================		   
+->Create a login form to take username and password and write php script to check the valid user. 
+===================================================================================
+ANSWER: SEE PHP FILE in Company FOLDER.
+=====================================================================================
+
+
